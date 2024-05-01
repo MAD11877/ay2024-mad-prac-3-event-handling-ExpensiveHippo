@@ -1,5 +1,6 @@
 package sg.edu.np.mad.madpractical3;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvDesc = findViewById(R.id.tvDesc);
         Button btnFollow = findViewById(R.id.btnFollow);
+        Button btnMessage = findViewById(R.id.btnMessage);
 
         // Set the TextViews with the user's name, description and default button message
         tvName.setText(user.name);
@@ -65,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
                     btnFollow.setText("Unfollow");
                     Toast.makeText(MainActivity.this, "Followed", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent messageGrp = new Intent(MainActivity.this, MessageGroup.class);
+                startActivity(messageGrp);
             }
         });
     }
