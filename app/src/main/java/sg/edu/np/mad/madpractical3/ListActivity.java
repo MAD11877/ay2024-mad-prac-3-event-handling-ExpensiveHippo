@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AlertDialog;
+import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -47,7 +48,12 @@ public class ListActivity extends AppCompatActivity {
 
                     // Set positive button
                     builder.setPositiveButton("VIEW", (dialog, which) -> {
+
+                        // Create intent to swap activity
                         Intent viewProfile = new Intent(ListActivity.this, MainActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putString("genNum", String.valueOf(new Random().nextInt(999999)));
+                        viewProfile.putExtras(extras);
                         startActivity(viewProfile);
                     });
 

@@ -27,8 +27,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        Bundle extras = getIntent().getExtras();
+        User user = new User("MAD", "MAD Developer", 1, false);
+
         // Initialize a new User object
-        User user = new User("John Doe", "MAD Developer", 1, false);
+        if (extras != null && extras.containsKey("genNum")) {
+            user.name += " " + extras.getString("genNum");
+        }
 
         // Get the TextViews and Button from the layout
         TextView tvName = findViewById(R.id.tvName);
